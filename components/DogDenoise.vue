@@ -7,7 +7,7 @@ const progress = ref(0) // 0 (Noise) to 1 (Clean)
 const errorMsg = ref('')
 let animationFrameId: number | null = null
 
-const imgSrc = '/Images/Synthetic_Cells.png'
+const imgSrc = `${import.meta.env.BASE_URL}Images/Synthetic_Cells.png`
 const image = new Image()
 let imageLoaded = false
 
