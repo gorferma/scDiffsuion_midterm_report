@@ -54,7 +54,7 @@ layout: section
     <h3 class="font-bold text-base m-0 text-white">Definition</h3>
   </div>
   <p class="text-xs text-slate-100 m-0 leading-tight">
-    A probabilistic generative model that learns to <span class="text-teal-300 font-semibold">reverse the diffusion process</span> to generate high-fidelity single-cell data from noise.
+    A probabilistic generative model that learns to reverse the diffusion process to generate high-fidelity single-cell data from noise.
   </p>
 </div>
 
