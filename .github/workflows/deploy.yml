@@ -27,6 +27,9 @@ jobs:
         # Dynamically set the base path to the repository name for correct routing
         run: npm run build -- --base /${{ github.event.repository.name }}/
 
+      - name: Create .nojekyll to bypass Jekyll processing
+        run: touch dist/.nojekyll
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
