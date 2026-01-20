@@ -4,6 +4,7 @@ background: /Images/Title_page.jpg
 class: text-center
 highlighter: shiki
 lineNumbers: false
+routerMode: hash
 info: |
   ## scDiffusion Presentation
   Presentation for scDiffusion project.
