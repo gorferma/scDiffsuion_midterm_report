@@ -64,7 +64,7 @@ layout: section
     <h3 class="font-bold text-base m-0 text-white">Core Concept</h3>
   </div>
   <p class="text-xs text-slate-100 m-0 leading-tight">
-    It iteratively <strong>refines random noise</strong> into biologically meaningful gene expression profiles.
+    It iteratively refines random noise into biologically meaningful gene expression profiles.
   </p>
 </div>
 
@@ -155,15 +155,15 @@ layout: section
     <ul class="space-y-3">
       <li class="flex items-center gap-2">
         <carbon:checkmark-filled class="text-green-500 text-xl flex-shrink-0"/> 
-        <span><strong>Raw UMIs:</strong> Essential for compatibility with all methods.</span>
+        <span>Raw UMIs: Essential for compatibility with all methods.</span>
       </li>
       <li class="flex items-center gap-2">
         <carbon:checkmark-filled class="text-green-500 text-xl flex-shrink-0"/> 
-        <span><strong>Volume:</strong> Sufficient cells for stable training.</span>
+        <span>Volume: Sufficient cells for stable training.</span>
       </li>
       <li class="flex items-center gap-2">
         <carbon:checkmark-filled class="text-green-500 text-xl flex-shrink-0"/> 
-        <span><strong>Complexity:</strong> Rare cell types & intermediate states (to showcase interpolation).</span>
+        <span>Complexity: Rare cell types & intermediate states (to showcase interpolation).</span>
       </li>
     </ul>
   </div>
@@ -295,10 +295,10 @@ layout: section
 <div v-click="1">
 <h3 class="font-bold text-teal-700">The Setup</h3>
 <div class="bg-slate-100 p-3 rounded-lg border-l-4 border-teal-500 text-sm">
-<p class="mb-2"><strong>Goal:</strong> Fast iteration & pipeline testing.</p>
+<p class="mb-2">Goal: Fast iteration & pipeline testing.</p>
 <ul class="list-disc pl-4 space-y-1">
-<li><strong>Data:</strong> Subset to <strong>2000 HVGs</strong> (Highly Variable Genes).</li>
-<li><strong>Expectation:</strong> Pipeline handles raw counts + <code>celltype</code> column.</li>
+<li>Data: Subset to 2000 HVGs (Highly Variable Genes).</li>
+<li>Expectation: Pipeline handles raw counts + <code>celltype</code> column.</li>
 </ul>
 </div>
 </div>
@@ -307,9 +307,9 @@ layout: section
 <h3 class="font-bold text-red-700">The Symptoms</h3>
 <div class="bg-red-50 p-3 rounded-lg border-l-4 border-red-500 text-sm">
 <ul class="list-disc pl-4 space-y-1">
-<li><strong>AE Loss:</strong> Steady (looked normal).</li>
-<li><strong>Latent Space:</strong> Collapsed into a "Big Blob".</li>
-<li><strong>Generated UMAPs:</strong> (See next slide).</li>
+<li>AE Loss: Steady (looked normal).</li>
+<li>Latent Space: Collapsed into a "Big Blob".</li>
+<li>Generated UMAPs: (See next slide).</li>
 </ul>
 </div>
 </div>
@@ -364,15 +364,15 @@ layout: section
   <div class="bg-red-50 p-3 rounded-lg border-l-4 border-red-500 text-sm">
     <h3 class="font-bold text-red-800 m-0 text-base">The Root Cause: Normalization</h3>
     <ul class="list-disc pl-4 mt-2 space-y-1 text-red-900">
-      <li>The Dataloader normalized based on <strong>input size</strong>.</li>
-      <li>Feeding <strong>HVGs only</strong> meant calculating library size on a fraction of the data.</li>
-      <li><strong>Result:</strong> Counts no longer represented the true cellular state.</li>
+      <li>The Dataloader normalized based on input size.</li>
+      <li>Feeding HVGs only meant calculating library size on a fraction of the data.</li>
+      <li>Result: Counts no longer represented the true cellular state.</li>
     </ul>
   </div>
 
   <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500 text-sm">
     <h3 class="font-bold text-blue-800 m-0 text-base">Why Unconditional looked "Good"</h3>
-    <p class="text-blue-900 mt-1"><strong>"Mud In = Mud Out"</strong></p>
+    <p class="text-blue-900 mt-1">"Mud In = Mud Out"</p>
     <p class="text-xs text-blue-800 mt-1">
       I applied the <em>same faulty normalization</em> to the real data for comparison. The Diffusion model is so powerful it perfectly replicated this meaningless "mush".
     </p>
@@ -415,7 +415,7 @@ layout: section
   <div v-click="1">
     <h3 class="font-bold text-teal-700 text-xl">The Correction</h3>
     <div class="bg-slate-100 p-4 rounded-lg border-l-4 border-teal-500">
-      <p><strong>Action:</strong> Normalized the full dataset <em>before</em> HVG selection.</p>
+      <p>Action: Normalized the full dataset <em>before</em> HVG selection.</p>
       <p class="mt-2 text-sm text-gray-600">This preserved the true library size information.</p>
     </div>
   </div>
@@ -463,7 +463,7 @@ layout: section
 <div v-click="3" class="mt-2 bg-yellow-50 p-3 rounded-lg border-l-4 border-yellow-500 text-center">
   <h3 class="text-yellow-800 font-bold m-0">The Confession</h3>
   <p class="text-sm text-yellow-900 m-0">
-    The "Good" image I showed you in Run 1? <strong>That was unscaled.</strong><br>
+    The "Good" image I showed you in Run 1? That was unscaled.<br>
     This "Garbage" is what the standard pipeline actually outputs.
   </p>
 </div>
@@ -515,7 +515,7 @@ Why does the "Standard" view look so bad when the model is good?
     </tbody>
   </table>
   <div class="mt-2 text-[10px] leading-tight text-gray-600">
-    <strong>The Insight:</strong> VAE outputs <em>noise</em> instead of <em>zeros</em>. Z-scoring (Standard View) amplifies this low-level noise, hiding the structure.
+    The Insight: VAE outputs <em>noise</em> instead of <em>zeros</em>. Z-scoring (Standard View) amplifies this low-level noise, hiding the structure.
   </div>
 </div>
 
