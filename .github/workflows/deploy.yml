@@ -24,8 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        # Hardcoded base path to ensure it matches the renamed repository
-        run: npm run build -- --base /scDiffusion_midterm_report/
+        run: npm run build -- --base /${{ github.event.repository.name }}/
 
       - name: Create .nojekyll to bypass Jekyll processing
         run: touch dist/.nojekyll
