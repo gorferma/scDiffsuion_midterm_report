@@ -279,6 +279,7 @@ layout: section
 <ul class="list-disc pl-4 space-y-1">
 <li>Toggling <code>scimilarity</code> integration.</li>
 <li>Normalization logic (Built-in vs. Manual) for Whole Data vs. HVGs.</li>
+<li>Fix hardcoded values</li>
 </ul>
 </div>
 </div>
@@ -526,6 +527,12 @@ Why does the "Standard" view look so bad when the model is good?
 </div>
 
 ---
+layout: center
+---
+
+<img src="/resources/proper_normalization_run/Unconditional_overlay_denoised_scaled.png" class="h-80 object-contain rounded shadow-lg" />
+
+---
 
 ## Run 2: Conditional Generation
 ### High-Fidelity Results across Cell Types
@@ -660,11 +667,21 @@ layout: section
 
 ## Next Steps
 
-<div class="grid grid-cols-2 gap-12 mt-16 px-8">
+<div class="grid grid-cols-6 gap-8 mt-16 px-8">
 
-<div v-click="1" class="flex items-center gap-4">
+<div v-click="1" class="col-span-2 flex items-center gap-4">
+  <div class="bg-indigo-100 p-3 rounded-full">
+    <carbon:compare class="text-2xl text-indigo-600" />
+  </div>
+  <div>
+    <h3 class="font-bold text-lg">scimilarity Integration</h3>
+    <p class="text-sm text-gray-600">Leverage scimilarity to improve cell type conditioning and representation.</p>
+  </div>
+</div>
+
+<div v-click="2" class="col-span-2 flex items-center gap-4">
   <div class="bg-blue-100 p-3 rounded-full">
-    <carbon:data-set class="text-2xl text-blue-600" />
+    <carbon:layers class="text-2xl text-blue-600" />
   </div>
   <div>
     <h3 class="font-bold text-lg">Full Dataset Run</h3>
@@ -672,7 +689,7 @@ layout: section
   </div>
 </div>
 
-<div v-click="2" class="flex items-center gap-4">
+<div v-click="3" class="col-span-2 flex items-center gap-4">
   <div class="bg-purple-100 p-3 rounded-full">
     <carbon:flow-stream class="text-2xl text-purple-600" />
   </div>
@@ -682,7 +699,7 @@ layout: section
   </div>
 </div>
 
-<div v-click="3" class="flex items-center gap-4">
+<div v-click="4" class="col-span-3 flex items-center gap-4">
   <div class="bg-teal-100 p-3 rounded-full">
     <carbon:split-screen class="text-2xl text-teal-600" />
   </div>
@@ -692,7 +709,7 @@ layout: section
   </div>
 </div>
 
-<div v-click="4" class="flex items-center gap-4">
+<div v-click="5" class="col-span-3 flex items-center gap-4">
   <div class="bg-yellow-100 p-3 rounded-full">
     <carbon:chart-evaluation class="text-2xl text-yellow-600" />
   </div>
