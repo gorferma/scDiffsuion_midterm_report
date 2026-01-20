@@ -206,7 +206,7 @@ layout: section
 
 <div v-click="2" class="text-sm mt-4">
 
-**Discovery:** Metadata contained conflicting technical metrics (e.g., legacy vs. updated UMI counts).
+**Discovery:** Metadata contained conflicting technical metrics (e.g. legacy vs. updated UMI counts).
 
 </div>
 
@@ -525,6 +525,131 @@ Why does the "Standard" view look so bad when the model is good?
 </div>
 
 ---
+
+## Run 2: Conditional Generation
+### High-Fidelity Results across Cell Types
+
+<div class="grid grid-cols-3 gap-x-4 gap-y-2 mt-4">
+  <div class="flex flex-col items-center">
+    <img src="/resources/proper_normalization_run/unscaled/conditional_umap_HSC_unscaled_vanilla.png" class="h-28 rounded shadow" />
+    <span class="text-[10px] mt-1 font-bold">HSC</span>
+  </div>
+  <div class="flex flex-col items-center">
+    <img src="/resources/proper_normalization_run/unscaled/conditional_umap_B_unscaled_vanilla.png" class="h-28 rounded shadow" />
+    <span class="text-[10px] mt-1 font-bold">B Cells</span>
+  </div>
+  <div class="flex flex-col items-center">
+    <img src="/resources/proper_normalization_run/unscaled/conditional_umap_T_unscaled_vanilla.png" class="h-28 rounded shadow" />
+    <span class="text-[10px] mt-1 font-bold">T Cells</span>
+  </div>
+  <div class="flex flex-col items-center">
+    <img src="/resources/proper_normalization_run/unscaled/conditional_umap_Mono-like_unscaled_vanilla.png" class="h-28 rounded shadow" />
+    <span class="text-[10px] mt-1 font-bold">Mono-like (Malignant)</span>
+  </div>
+  <div class="flex flex-col items-center">
+    <img src="/resources/proper_normalization_run/unscaled/conditional_umap_earlyEry_unscaled_vanilla.png" class="h-28 rounded shadow" />
+    <span class="text-[10px] mt-1 font-bold">Early Erythroblasts</span>
+  </div>
+  <div class="flex flex-col items-center">
+    <img src="/resources/proper_normalization_run/unscaled/conditional_umap_pDC_unscaled_vanilla.png" class="h-28 rounded shadow" />
+    <span class="text-[10px] mt-1 font-bold">pDC</span>
+  </div>
+</div>
+
+<div class="mt-6 bg-teal-50 p-3 rounded-lg border-l-4 border-teal-500 text-sm">
+  <strong>The Proof:</strong> By conditioning on cell type labels, we can generate synthetic cells that perfectly match the biological manifold of their real counterparts. Note the preservation of <em>shape</em> and <em>density</em>.
+</div>
+
+---
+layout: full
+---
+
+<div class="flex flex-col items-center justify-center h-full">
+  <h2 class="text-3xl font-bold mb-4 text-teal-700">T Cell Detail: Run 2 (Unscaled)</h2>
+  <img src="/resources/proper_normalization_run/unscaled/conditional_umap_T_unscaled_vanilla.png" class="h-[80%] rounded-xl shadow-2xl border-4 border-teal-500/30" />
+</div>
+
+---
+layout: full
+---
+
+<div class="flex flex-col items-center justify-center h-full">
+  <h2 class="text-3xl font-bold mb-4 text-purple-700">pDC Detail: Run 2 (Unscaled)</h2>
+  <img src="/resources/proper_normalization_run/unscaled/conditional_umap_pDC_unscaled_vanilla.png" class="h-[80%] rounded-xl shadow-2xl border-4 border-purple-500/30" />
+</div>
+
+---
+
+## Cell Type Dictionary
+### Mapping Legend Keys to Biological Meaning
+
+<div class="mt-4 overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+  <table class="w-full text-left text-sm">
+    <thead class="bg-gray-50 font-bold text-gray-700">
+      <tr>
+        <th class="px-4 py-2 border-b">Key</th>
+        <th class="px-4 py-2 border-b">Meaning</th>
+        <th class="px-4 py-2 border-b">Key</th>
+        <th class="px-4 py-2 border-b">Meaning</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-600">
+      <tr>
+        <td class="px-4 py-1 font-mono text-teal-600 border-b">HSC</td>
+        <td class="px-4 py-1 border-b">Hematopoietic Stem Cells</td>
+        <td class="px-4 py-1 font-mono text-red-600 border-b">Ery</td>
+        <td class="px-4 py-1 border-b">Red Blood Cell Precursors</td>
+      </tr>
+      <tr class="bg-gray-50/50">
+        <td class="px-4 py-1 font-mono text-teal-600 border-b">Prog</td>
+        <td class="px-4 py-1 border-b">Progenitors</td>
+        <td class="px-4 py-1 font-mono text-blue-600 border-b">B / T / NK</td>
+        <td class="px-4 py-1 border-b">Immune Cells (Lymphoid)</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-1 font-mono text-orange-600 border-b">GMP</td>
+        <td class="px-4 py-1 border-b">Granulocyte Monocyte Progenitors</td>
+        <td class="px-4 py-1 font-mono text-blue-600 border-b">CTL</td>
+        <td class="px-4 py-1 border-b">Cytotoxic T-Cells</td>
+      </tr>
+      <tr class="bg-gray-50/50">
+        <td class="px-4 py-1 font-mono text-orange-600 border-b">Mono</td>
+        <td class="px-4 py-1 border-b">Monocytes</td>
+        <td class="px-4 py-1 font-mono text-purple-600 border-b">pDC / cDC</td>
+        <td class="px-4 py-1 border-b">Dendritic Cells</td>
+      </tr>
+      <tr class="bg-yellow-50 font-bold">
+        <td class="px-4 py-2 font-mono text-gray-900">*-like</td>
+        <td class="px-4 py-2 text-gray-900" colspan="3">Malignant / Leukemic Cells (e.g. Mono-like = AML Monocytes)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## Global Manifold Reconstruction: Real vs Synthetic
+### Unscaled Data (Run 2)
+
+<div class="grid grid-cols-2 gap-8 mt-4">
+  <div class="flex flex-col items-center">
+    <h3 class="font-bold text-teal-700 mb-2 text-xl">Real Data</h3>
+    <img src="/resources/proper_normalization_run/unscaled/umap_all_real_with_legend.png" class="h-80 rounded shadow-lg border-2 border-teal-500/50" />
+    <p class="mt-4 text-sm text-gray-600 font-semibold text-center px-4">
+      The Ground Truth biological manifold from the Van Galen dataset.
+    </p>
+  </div>
+  
+  <div class="flex flex-col items-center">
+    <h3 class="font-bold text-purple-700 mb-2 text-xl">Synthetic Data</h3>
+    <img src="/resources/proper_normalization_run/unscaled/umap_all_synthetic_with_legend.png" class="h-80 rounded shadow-lg border-2 border-purple-500/50" />
+    <p class="mt-4 text-sm text-gray-600 font-semibold text-center px-4">
+      Generated cells (conditioned on label) reconstruct the manifold structure.
+    </p>
+  </div>
+</div>
+
+---
 layout: section
 ---
 
@@ -552,7 +677,7 @@ layout: section
   </div>
   <div>
     <h3 class="font-bold text-lg">Interpolation</h3>
-    <p class="text-sm text-gray-600">Map the continuous developmental trajectories (e.g., HSC -> Erythroid).</p>
+    <p class="text-sm text-gray-600">Map the continuous developmental trajectories (e.g. HSC -> Erythroid).</p>
   </div>
 </div>
 
@@ -562,7 +687,7 @@ layout: section
   </div>
   <div>
     <h3 class="font-bold text-lg">Multiconditional</h3>
-    <p class="text-sm text-gray-600">Generate complex states (e.g., CellType + Disease State).</p>
+    <p class="text-sm text-gray-600">Generate complex states (e.g. CellType + Disease State).</p>
   </div>
 </div>
 
